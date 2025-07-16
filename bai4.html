@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      fieldset {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: white;
+      }
+      legend {
+        font-weight: bold;
+        color: #2c3e50;
+        padding: 0 10px;
+      }
+      .form-group {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+      }
+      .form-group label {
+        width: 200px;
+        font-weight: 500;
+      }
+      .form-control {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      .radio-group,
+      .checkbox-group {
+        display: flex;
+        gap: 15px;
+      }
+      .radio-group label,
+      .checkbox-group label {
+        width: auto;
+        font-weight: normal;
+      }
+      .buttons {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .btn {
+        padding: 10px 20px;
+        margin: 0 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .btn-submit {
+        background-color: #3498db;
+        color: white;
+      }
+      .btn-reset {
+        background-color: #e74c3c;
+        color: white;
+      }
+      .notes {
+        margin-top: 15px;
+        padding-left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="#" method="post" enctype="multipart/form-data">
+      <fieldset>
+        <legend>Basic Info</legend>
+
+        <div class="form-group">
+          <label for="employeeId">Employee ID</label>
+          <input
+            type="text"
+            id="employeeId"
+            class="form-control"
+            value="9"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input
+            type="text"
+            id="lastName"
+            class="form-control"
+            value="Dodsworth"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input
+            type="text"
+            id="firstName"
+            class="form-control"
+            value="Anne"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Gender</label>
+          <div class="radio-group">
+            <label
+              ><input type="radio" name="gender" value="male" /> Male</label
+            >
+            <label
+              ><input type="radio" name="gender" value="female" /> Female</label
+            >
+            <label><input type="radio" name="gender" value="xxx" /> XXX</label>
+            <label>
+              <input type="radio" name="gender" value="zzz" checked />
+              ZZZ</label
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input
+            type="text"
+            id="title"
+            class="form-control"
+            value="Sales Representative"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="suffix">Suffix</label>
+          <input type="text" id="suffix" class="form-control" value="Ms." />
+        </div>
+
+        <div class="form-group">
+          <label for="birthDate">BirthDate</label>
+          <input type="date" id="birthDate" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+          <label for="hireDate">HireDate</label>
+          <input type="date" id="hireDate" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+          <label for="ssn">SSN # (if applicable)</label>
+          <input type="text" id="ssn" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="reportsTo">Reports To</label>
+          <select id="reportsTo" class="form-control">
+            <option value="">-- Select --</option>
+            <option value="1">Employee 1</option>
+            <option value="2">Employee 2</option>
+            <option value="3">Employee 3</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Contact Info</legend>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            value="name@example.com"
+            required
+            disabled
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input
+            type="text"
+            id="address"
+            class="form-control"
+            value="7 Houndstooth Rd."
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="city">City</label>
+          <input
+            type="text"
+            id="city"
+            class="form-control"
+            value="London"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="region">Region</label>
+          <input type="text" id="region" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="postalCode">Postal Code</label>
+          <input
+            type="text"
+            id="postalCode"
+            class="form-control"
+            value="WG2 7LT"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="country">Country</label>
+          <select id="country" class="form-control" required>
+            <option value="">-- Select Country --</option>
+            <option value="US">United States</option>
+            <option value="UK">United Kingdom</option>
+            <option value="RU">Russian Federation</option>
+            <option value="VN">Vietnam</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">US Home Phone</label>
+          <input
+            type="tel"
+            id="phone"
+            class="form-control"
+            value="(234)234-2342"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="photo">Photo</label>
+          <input type="file" id="photo" class="form-control" accept="image/*" />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Optional Info</legend>
+
+        <div class="form-group">
+          <label for="notes">Notes</label>
+          <textarea id="notes" class="form-control" rows="4"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Preferred Shift</label>
+          <div class="checkbox-group">
+            <label
+              ><input type="checkbox" name="shift" value="regular" />
+              Regular</label
+            >
+            <label
+              ><input type="checkbox" name="shift" value="crazy_yard" checked />
+              Crazy Yard</label
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Active?</label>
+          <div>
+            <input type="checkbox" name="shift" value="active" checked />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Are you human?</label>
+          <div class="checkbox-group">
+            <label
+              ><input type="checkbox" name="human" value="yes" /> Click to
+              change</label
+            >
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="buttons">
+        <button type="submit" class="btn btn-submit">Submit</button>
+        <button type="reset" class="btn btn-reset">Reset</button>
+      </div>
+    </form>
+  </body>
+</html>
