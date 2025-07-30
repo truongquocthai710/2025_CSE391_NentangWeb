@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản Lý Sinh Viên</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="navbar">Quản Lý Sinh Viên</div>
+
+  <div class="container">
+    <div class="form-container">
+      <h2>Thêm Sinh Viên</h2>
+      <form id="studentForm">
+        <label for="maSV">Mã sinh viên *</label>
+        <input type="text" id="maSV" required>
+        <label for="hoTen">Họ và tên *</label>
+        <input type="text" id="hoTen" required>
+        <label for="email">Email *</label>
+        <input type="email" id="email" required>
+        <label for="ngaySinh">Ngày sinh</label>
+        <input type="date" id="ngaySinh">
+        <label>Giới tính</label>
+        <div class="gender-group">
+          <label><input type="radio" name="gioiTinh" value="Nam" required> Nam</label>
+          <label><input type="radio" name="gioiTinh" value="Nữ"> Nữ</label>
+        </div>
+        <label for="ghiChu">Ghi chú</label>
+        <textarea id="ghiChu" rows="2"></textarea>
+        <button type="submit" id="btnThem">Thêm sinh viên</button>
+        <div class="alert" id="thongBao"></div>
+      </form>
+    </div>
+
+    <div class="table-container">
+      <h2>Danh Sách Sinh Viên</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Mã SV</th>
+            <th>Họ tên</th>
+            <th>Email</th>
+            <th>Giới tính</th>
+            <th>Ngày sinh</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody id="studentTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
