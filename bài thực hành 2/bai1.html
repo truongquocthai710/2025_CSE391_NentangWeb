@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Flexbox</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      max-width: 600px;
+      gap: 15px;
+    }
+    .form-row {
+      display: flex;
+      gap: 10px;
+    }
+    .form-row label {
+      width: 150px;
+      font-weight: bold;
+    }
+    .form-row input, .form-row select {
+      flex: 1;
+      padding: 6px;
+    }
+    button {
+      width: 150px;
+      padding: 10px;
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Form đăng ký</h2>
+  <form class="form-container">
+    <div class="form-row">
+      <label for="fullname">Họ và tên:</label>
+      <input type="text" id="fullname" required>
+    </div>
+    <div class="form-row">
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+    </div>
+    <div class="form-row">
+      <label for="gender">Giới tính:</label>
+      <select id="gender">
+        <option>Nam</option>
+        <option>Nữ</option>
+        <option>Khác</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label for="password">Mật khẩu:</label>
+      <input type="password" id="password" required>
+    </div>
+    <div class="form-row">
+      <label></label>
+      <button type="submit">Đăng ký</button>
+    </div>
+  </form>
+</body>
+</html>
