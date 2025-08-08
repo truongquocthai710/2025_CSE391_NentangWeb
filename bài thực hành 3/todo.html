@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo List - Quản lý công việc</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px auto;
+      max-width: 600px;
+      padding: 0 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    #taskInput {
+      width: 70%;
+      padding: 10px;
+    }
+    #addTaskBtn {
+      padding: 10px 20px;
+      margin-left: 10px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      padding: 10px;
+      margin: 8px 0;
+      background: #f0f0f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    li.done span {
+      text-decoration: line-through;
+      color: gray;
+    }
+    .actions button {
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Todo List</h1>
+  <input type="text" id="taskInput" placeholder="Nhập công việc...">
+  <button id="addTaskBtn">Thêm công việc</button>
+
+  <ul id="taskList"></ul>
+
+  <script>
+    let tasks = [];
+
+    function saveTasksToLocalStorage() {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+
+    function loadTasksFromLocalStorage() {
+      const saved = localStorage.getItem('tasks');
+      if (saved) {
+        tasks = JSON.parse(saved);
+        renderTasks();
+      }
+    }
+
+    function renderTasks() {
+      const list = document.getElementById('taskList');
+      list.innerHTML = '';
+      tasks.forEach((task, index) => {
+        const li = document.createElement('li');
+        li.className = task.isDone ? 'done' : '';
+        const span = document.createElement('span');
+        span.textContent = task.text;
+        span.onclick = () => toggleDone(index);
+
+        const delBtn = document.createElement('button');
+        delBtn.textContent = 'Xóa';
+        delBtn.onclick = () => deleteTask(index);
+
+        const actions = document.createElement('div');
+        actions.className = 'actions';
+        actions.appendChild(delBtn);
+
+        li.appendChild(span);
+        li.appendChild(actions);
+        list.appendChild(li);
+      });
+    }
+
+    function addTask() {
+      const input = document.getElementById('taskInput');
+      const value = input.value.trim();
+      if (!value) {
+        alert("Vui lòng nhập nội dung công việc!");
+        return;
+      }
+      tasks.push({ text: value, isDone: false });
+      input.value = '';
+      saveTasksToLocalStorage();
+      renderTasks();
+    }
+
+    function deleteTask(index) {
+      tasks.splice(index, 1);
+      saveTasksToLocalStorage();
+      renderTasks();
+    }
+
+    function toggleDone(index) {
+      tasks[index].isDone = !tasks[index].isDone;
+      saveTasksToLocalStorage();
+      renderTasks();
+    }
+
+    document.getElementById('addTaskBtn').addEventListener('click', addTask);
+
+    loadTasksFromLocalStorage();
+  </script>
+</body>
+</html>

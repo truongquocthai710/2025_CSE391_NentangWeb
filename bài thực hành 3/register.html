@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đăng ký bằng jQuery & AJAX</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 500px;
+      margin: 50px auto;
+    }
+    input {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    button {
+      padding: 10px 20px;
+    }
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+    .success {
+      color: green;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Form đăng ký</h2>
+  <form id="registerForm">
+    <input type="text" id="name" placeholder="Họ tên">
+    <div class="error" id="nameError"></div>
+
+    <input type="email" id="email" placeholder="Email">
+    <div class="error" id="emailError"></div>
+
+    <input type="password" id="password" placeholder="Mật khẩu">
+    <div class="error" id="passwordError"></div>
+
+    <button type="submit">Đăng ký</button>
+  </form>
+
+  <div class="success" id="resultMsg"></div>
+
+  <script>
+    $(document).ready(function () {
+      console.log("jQuery is ready!");
+
+      $('#registerForm').on('submit', function (e) {
+        e.preventDefault();
+
+        // Xóa lỗi cũ
+        $('.error').text('');
+        $('#resultMsg').text('');
+
+        let name = $('#name').val().trim();
+        let email = $('#email').val().trim();
+        let password = $('#password').val().trim();
+        let hasError = false;
+
+        if (!name) {
+          $('#nameError').text('Họ tên không được để trống');
+          hasError = true;
+        }
+        if (!email.includes('@')) {
+          $('#emailError').text('Email không hợp lệ');
+          hasError = true;
+        }
+        if (password.length < 6) {
+          $('#passwordError').text('Mật khẩu tối thiểu 6 ký tự');
+          hasError = true;
+        }
+
+        if (hasError) return;
+
+        $.ajax({
+          url: 'https://jsonplaceholder.typicode.com/posts',
+          method: 'POST',
+          data: {
+            name: name,
+            email: email,
+            password: password
+          },
+          success: function (res) {
+            $('#registerForm').slideUp();
+            $('#resultMsg').text('Đăng ký thành công! ID: ' + res.id);
+          },
+          error: function () {
+            $('#resultMsg').text('Có lỗi xảy ra. Vui lòng thử lại.');
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
